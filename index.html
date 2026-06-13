@@ -13,9 +13,19 @@
     --mint:#1ec98a; --mint2:#5ee3b6;
     --lav:#9b8bff;
     --ink:#23202b; --sub:#7b7689; --line:rgba(40,30,60,.10);
-    --bg:#fffdf9; --card:#ffffff;
+    --bg:#fffdf9; --card:#ffffff; --soft:#fff6ef; --header:rgba(255,253,249,.82);
     --grad:linear-gradient(100deg,var(--gold) 0%,var(--pink) 48%,var(--mint) 100%);
   }
+  /* 🌙 예쁜 다크 테마 (딥 플럼+네온 그라데이션) */
+  :root[data-theme="dark"]{
+    --ink:#f1ecfb; --sub:#a89bc6; --line:rgba(255,255,255,.10);
+    --bg:#120e1e; --card:#1d1730; --soft:#171127; --header:rgba(18,14,30,.82);
+  }
+  :root[data-theme="dark"] .reel{background:linear-gradient(150deg,#1a1030 0%,#2a1233 42%,#0f2024 100%)}
+  :root[data-theme="dark"] .orb{mix-blend-mode:screen;opacity:.4}
+  :root[data-theme="dark"] .cut .bg-line{color:#f1ecfb}
+  :root[data-theme="dark"] .btn-soft{background:#241c38;border-color:rgba(255,255,255,.14)}
+  :root[data-theme="dark"] body{background:var(--bg)}
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--ink);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -64,7 +74,10 @@
   .reel-enter a{display:inline-block;color:#fff;font-weight:800;font-size:14px;background:var(--grad);background-size:240% auto;animation:sh 5s linear infinite;padding:11px 20px;border-radius:999px;box-shadow:0 12px 26px -10px var(--pink)}
 
   /* ───────── 헤더 ───────── */
-  header{position:sticky;top:0;z-index:50;background:rgba(255,253,249,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  header{position:sticky;top:0;z-index:50;background:var(--header);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .theme-btn{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;font-size:18px;display:grid;place-items:center;transition:transform .2s,border-color .2s;flex:0 0 auto}
+  .theme-btn:hover{transform:translateY(-2px) rotate(-12deg);border-color:var(--pink)}
+  .nav-right{display:flex;align-items:center;gap:10px}
   .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
   .logo{font-weight:800;font-size:19px;letter-spacing:-.5px}
   .menu{display:flex;gap:26px;font-size:14.5px;font-weight:600;color:var(--sub)}
@@ -152,6 +165,20 @@
   .contact .ways{margin-top:26px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
   .contact .w{background:rgba(255,255,255,.96);color:var(--ink);padding:14px 24px;border-radius:100px;font-weight:800;font-size:15px;box-shadow:0 14px 30px rgba(0,0,0,.18);transition:transform .2s}
   .contact .w:hover{transform:translateY(-3px)}
+  /* 관련 사이트 버튼 */
+  .sitelinks-sec{padding:18px 0 44px}
+  .sl-title{text-align:center;font-size:13px;font-weight:800;letter-spacing:2px;color:var(--sub);margin-bottom:18px}
+  .sitelinks{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+  .sitebtn{display:flex;align-items:center;gap:14px;background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:16px 22px;min-width:300px;transition:transform .28s cubic-bezier(.34,1.56,.64,1),box-shadow .28s,border-color .28s}
+  .sitebtn:hover{transform:translateY(-6px);box-shadow:0 22px 44px rgba(255,95,162,.2);border-color:transparent}
+  .sb-ic{font-size:26px;width:52px;height:52px;flex:0 0 auto;border-radius:15px;display:grid;place-items:center;background:var(--grad);background-size:240% auto;animation:sh 6s linear infinite;box-shadow:0 10px 22px -8px var(--pink)}
+  .sb-tx{display:flex;flex-direction:column;flex:1;text-align:left}
+  .sb-tx b{font-size:16px;font-weight:800}
+  .sb-tx small{font-size:12.5px;color:var(--sub)}
+  .sb-ar{font-size:20px;font-weight:800;color:var(--pink);transition:transform .28s}
+  .sitebtn:hover .sb-ar{transform:translateX(7px)}
+  .sitebtn:hover .sb-tx b{background:var(--grad);background-size:240% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh 6s linear infinite}
+  @media(max-width:560px){.sitebtn{min-width:0;width:100%}}
   footer{text-align:center;padding:34px 22px;color:var(--sub);font-size:13px}
 </style>
 </head>
@@ -181,7 +208,10 @@
       <a href="#career">학력·경력</a>
       <a href="#activity">강의 활동</a>
     </nav>
-    <a href="#contact" class="nav-cta">강의 문의</a>
+    <div class="nav-right">
+      <button class="theme-btn" id="themeBtn" aria-label="테마 전환" onclick="toggleTheme()">🌙</button>
+      <a href="#contact" class="nav-cta">강의 문의</a>
+    </div>
   </div>
 </header>
 
@@ -226,7 +256,7 @@
 </section>
 
 <!-- 강의 분야 -->
-<section class="block" id="fields" style="background:linear-gradient(180deg,#fff,#fff6ef)">
+<section class="block" id="fields" style="background:var(--soft)">
   <div class="wrap">
     <p class="eyebrow grad reveal">EXPERTISE</p>
     <h2 class="h2 reveal">강의 분야</h2>
@@ -267,7 +297,7 @@
 </section>
 
 <!-- 강의 활동 -->
-<section class="block" id="activity" style="background:linear-gradient(180deg,#fff6ef,#fff)">
+<section class="block" id="activity" style="background:var(--soft)">
   <div class="wrap">
     <p class="eyebrow grad reveal">ACTIVITIES</p>
     <h2 class="h2 reveal">강의 활동 내역</h2>
@@ -303,9 +333,40 @@
   </div>
 </section>
 
+<!-- 관련 사이트 -->
+<section class="sitelinks-sec">
+  <div class="wrap">
+    <p class="sl-title reveal">온종일 그룹 사이트</p>
+    <div class="sitelinks">
+      <a href="https://kimjonghoon1306.github.io/onjongil-partner/" target="_blank" rel="noopener" class="sitebtn reveal">
+        <span class="sb-ic">🤝</span>
+        <span class="sb-tx"><b>온종일 파트너</b><small>여러 사업의 사장님이 되는 길</small></span>
+        <span class="sb-ar">→</span>
+      </a>
+      <a href="https://www.온종일.com" target="_blank" rel="noopener" class="sitebtn reveal">
+        <span class="sb-ic">🏢</span>
+        <span class="sb-tx"><b>온종일 본사</b><small>온종일 공식 홈페이지</small></span>
+        <span class="sb-ar">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <footer>© 2026 이수빈 · 통일·안보 교육 전문강사 — Profile by jia</footer>
 
 <script>
+  // 테마 토글 (저장)
+  function applyTheme(t){
+    document.documentElement.setAttribute('data-theme', t);
+    var b=document.getElementById('themeBtn'); if(b) b.textContent = t==='dark' ? '☀️' : '🌙';
+    try{ localStorage.setItem('jia-theme', t); }catch(e){}
+  }
+  function toggleTheme(){
+    var cur=document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light';
+    applyTheme(cur==='dark'?'light':'dark');
+  }
+  (function(){ var s; try{ s=localStorage.getItem('jia-theme'); }catch(e){} applyTheme(s==='dark'?'dark':'light'); })();
+
   const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.12});
   document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4*70)+'ms';io.observe(el)});
 </script>
