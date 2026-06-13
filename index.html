@@ -204,6 +204,28 @@
   .sitebtn:hover .sb-ar{transform:translateX(7px)}
   .sitebtn:hover .sb-tx b{background:var(--grad);background-size:240% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh 6s linear infinite}
   @media(max-width:560px){.sitebtn{min-width:0;width:100%}}
+  /* ── 지아봇 (새터민 지원 안내 챗봇) ── */
+  .jb-fab{position:fixed;right:20px;bottom:22px;z-index:9998;display:flex;flex-direction:column;align-items:center;gap:5px;background:none;border:none;cursor:pointer;padding:0}
+  .jb-ball{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#ffd27a,#ff5fa2 55%,#9b8bff);display:grid;place-items:center;box-shadow:0 12px 28px -6px rgba(255,95,162,.55);transition:transform .25s}
+  .jb-fab:hover .jb-ball{transform:translateY(-3px) scale(1.06)}
+  .jb-name{font-size:11.5px;font-weight:800;color:#ff3f8f;background:#fff;padding:2px 11px;border-radius:100px;box-shadow:0 3px 9px rgba(0,0,0,.14)}
+  .jb-svg{width:44px;height:44px}.jb-svg.sm{width:32px;height:32px}
+  .jb-panel{position:fixed;right:20px;bottom:22px;z-index:9999;width:min(372px,calc(100vw-40px));height:min(584px,78vh);background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;display:none;flex-direction:column;box-shadow:0 26px 64px rgba(0,0,0,.32)}
+  .jb-panel.open{display:flex}
+  .jb-head{display:flex;align-items:center;gap:10px;padding:14px 16px;background:linear-gradient(120deg,#ff8fbf,#9b8bff);color:#fff}
+  .jb-head b{font-size:15px;font-weight:900;display:block}
+  .jb-head small{font-size:11px;opacity:.92}
+  .jb-x{margin-left:auto;background:rgba(255,255,255,.22);border:none;color:#fff;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:15px}
+  .jb-body{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:var(--soft)}
+  .jb-msg{max-width:86%;font-size:13px;line-height:1.62;padding:11px 14px;white-space:pre-line}
+  .jb-bot{align-self:flex-start;background:var(--card);border:1px solid var(--line);color:var(--ink);border-radius:15px 15px 15px 4px}
+  .jb-user{align-self:flex-end;background:linear-gradient(135deg,#ff7ab0,#9b8bff);color:#fff;border-radius:15px 15px 4px 15px}
+  .jb-go{display:inline-flex;align-items:center;gap:5px;margin-top:9px;font-size:12.5px;font-weight:800;color:#fff;background:linear-gradient(135deg,#ff5fa2,#9b8bff);padding:9px 15px;border-radius:100px;text-decoration:none}
+  .jb-quick{border-top:1px solid var(--line);background:var(--card);padding:11px 12px;max-height:188px;overflow-y:auto}
+  .jb-quick .lab{margin:0 0 8px 2px;font-size:11px;font-weight:800;color:var(--sub)}
+  .jb-quick .row{display:flex;flex-wrap:wrap;gap:7px}
+  .jb-q{font-size:12px;font-weight:700;color:#d83f86;background:rgba(255,95,162,.10);border:1px solid rgba(255,95,162,.28);border-radius:100px;padding:7px 12px;cursor:pointer;font-family:inherit}
+  .jb-q:hover{background:rgba(255,95,162,.2)}
   footer{text-align:center;padding:34px 22px;color:var(--sub);font-size:13px}
 </style>
 </head>
@@ -389,6 +411,50 @@
   </div>
 </section>
 
+<!-- ── 지아봇 (새터민 지원 안내) ── -->
+<button class="jb-fab" id="jbFab" onclick="jbOpen()" aria-label="지아봇 열기">
+  <span class="jb-ball">
+    <svg class="jb-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="32" y1="12" x2="32" y2="6.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M32 3.4c-1.3-1.7-4.2-.9-4.2 1.3 0 1.6 2.3 3 4.2 4.4 1.9-1.4 4.2-2.8 4.2-4.4 0-2.2-2.9-3-4.2-1.3z" fill="#fff"/>
+      <circle cx="13" cy="33" r="4.4" fill="#ffd9e8"/><circle cx="51" cy="33" r="4.4" fill="#ffd9e8"/>
+      <rect x="14" y="15" width="36" height="34" rx="13" fill="url(#jbg)"/>
+      <rect x="19" y="21" width="26" height="21" rx="9" fill="#2a1a40"/>
+      <path d="M23.5 25.5l2.2 1.6M40.5 25.5l-2.2 1.6" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="27" cy="30.5" r="3" fill="#fff"/><circle cx="37" cy="30.5" r="3" fill="#fff"/>
+      <path d="M28 36q4 3.2 8 0" stroke="#ffc2db" stroke-width="1.9" stroke-linecap="round" fill="none"/>
+      <circle cx="23" cy="35" r="2" fill="#ff7ab0" opacity=".55"/><circle cx="41" cy="35" r="2" fill="#ff7ab0" opacity=".55"/>
+      <defs><linearGradient id="jbg" x1="14" y1="15" x2="50" y2="49" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#ffe2a6"/><stop offset=".5" stop-color="#ffb3d4"/><stop offset="1" stop-color="#c0b6ff"/></linearGradient></defs>
+    </svg>
+  </span>
+  <span class="jb-name">지아봇</span>
+</button>
+
+<div class="jb-panel" id="jbPanel">
+  <div class="jb-head">
+    <svg class="jb-svg sm" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="32" y1="12" x2="32" y2="6.5" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/>
+      <path d="M32 3.4c-1.3-1.7-4.2-.9-4.2 1.3 0 1.6 2.3 3 4.2 4.4 1.9-1.4 4.2-2.8 4.2-4.4 0-2.2-2.9-3-4.2-1.3z" fill="#fff"/>
+      <circle cx="13" cy="33" r="4.4" fill="#ffd9e8"/><circle cx="51" cy="33" r="4.4" fill="#ffd9e8"/>
+      <rect x="14" y="15" width="36" height="34" rx="13" fill="url(#jbg2)"/>
+      <rect x="19" y="21" width="26" height="21" rx="9" fill="#2a1a40"/>
+      <path d="M23.5 25.5l2.2 1.6M40.5 25.5l-2.2 1.6" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="27" cy="30.5" r="3" fill="#fff"/><circle cx="37" cy="30.5" r="3" fill="#fff"/>
+      <path d="M28 36q4 3.2 8 0" stroke="#ffc2db" stroke-width="1.9" stroke-linecap="round" fill="none"/>
+      <defs><linearGradient id="jbg2" x1="14" y1="15" x2="50" y2="49" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#ffe2a6"/><stop offset=".5" stop-color="#ffb3d4"/><stop offset="1" stop-color="#c0b6ff"/></linearGradient></defs>
+    </svg>
+    <div><b>지아봇</b><small>새터민 지원 사이트 안내</small></div>
+    <button class="jb-x" onclick="jbClose()" aria-label="닫기">✕</button>
+  </div>
+  <div class="jb-body" id="jbBody"></div>
+  <div class="jb-quick">
+    <p class="lab">궁금한 걸 눌러보세요 👇</p>
+    <div class="row" id="jbQuick"></div>
+  </div>
+</div>
+
 <footer>© 2026 이수빈 · 통일·안보 교육 전문강사 — Profile by jia</footer>
 
 <script>
@@ -406,6 +472,28 @@
 
   const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.12});
   document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4*70)+'ms';io.observe(el)});
+
+  /* ── 지아봇: 새터민(탈북민) 지원·교육 연계 사이트 안내 (정해진 답변) ── */
+  const JB=[
+    {q:'🏠 정착 지원 (남북하나재단)', d:'북한이탈주민의 정착·교육·취업·생활을 종합 지원하는 핵심 기관이에요.\n초기 정착금, 생활·의료, 교육·취업 프로그램을 안내받을 수 있어요.', u:'https://www.koreahana.or.kr'},
+    {q:'🏫 우리 동네 하나센터', d:'전국 지역 하나센터에서 초기 정착과 생활을 1:1로 도와줘요.\n하나재단 홈페이지에서 가까운 지역적응센터를 찾을 수 있어요.', u:'https://www.koreahana.or.kr'},
+    {q:'🏛️ 정부 정책 (통일부)', d:'북한이탈주민 정착지원 정책과 통일 관련 정보를 확인할 수 있어요.', u:'https://www.unikorea.go.kr'},
+    {q:'📚 통일·안보 교육 (국립통일교육원)', d:'통일·안보 교육 자료와 온라인 강의를 무료로 들을 수 있어요.\n강사 이수빈의 강의 분야와도 이어지는 곳이에요.', u:'https://www.uniedu.go.kr'},
+    {q:'🧑‍🎓 청소년 지원 (무지개청소년센터)', d:'탈북·이주배경 청소년의 학업과 한국 사회 적응을 돕는 곳이에요.', u:'https://www.rainbowyouth.or.kr'},
+    {q:'💼 취업·일자리 (워크넷)', d:'일자리 검색과 취업 지원을 받을 수 있어요.\n하나재단과 연계된 취업 프로그램도 함께 활용해 보세요.', u:'https://www.work.go.kr'},
+    {q:'🕊️ 인권·기록 (북한인권정보센터)', d:'북한 인권 기록과 정착민 상담·지원 정보를 제공해요.', u:'https://www.nkdb.org'},
+  ];
+  function jbScroll(){ var b=document.getElementById('jbBody'); if(b) b.scrollTop=b.scrollHeight; }
+  function jbBot(html){ var b=document.getElementById('jbBody'); var d=document.createElement('div'); d.className='jb-msg jb-bot'; d.innerHTML=html; b.appendChild(d); jbScroll(); }
+  function jbUser(t){ var b=document.getElementById('jbBody'); var d=document.createElement('div'); d.className='jb-msg jb-user'; d.textContent=t; b.appendChild(d); jbScroll(); }
+  function jbAsk(i){ var x=JB[i]; jbUser(x.q); jbBot(x.d.replace(/</g,'&lt;')+'<br><a class="jb-go" href="'+x.u+'" target="_blank" rel="noopener">사이트 바로가기 →</a>'); }
+  function jbInit(){
+    var q=document.getElementById('jbQuick'); if(q.childElementCount) return;
+    JB.forEach(function(x,i){ var btn=document.createElement('button'); btn.className='jb-q'; btn.textContent=x.q; btn.onclick=function(){jbAsk(i)}; q.appendChild(btn); });
+    jbBot('안녕하세요, <b>지아봇</b>이에요 🌸\n새터민(탈북민) 여러분이 도움받을 수 있는 <b>지원·교육 사이트</b>를 안내해 드려요.\n아래에서 궁금한 걸 눌러보세요. (공식 기관 사이트로 연결돼요)');
+  }
+  function jbOpen(){ jbInit(); document.getElementById('jbPanel').classList.add('open'); document.getElementById('jbFab').style.display='none'; }
+  function jbClose(){ document.getElementById('jbPanel').classList.remove('open'); document.getElementById('jbFab').style.display='flex'; }
 </script>
 </body>
 </html>
