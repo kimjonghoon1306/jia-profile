@@ -233,11 +233,12 @@
   .jb-bot{align-self:flex-start;background:var(--card);border:1px solid var(--line);color:var(--ink);border-radius:15px 15px 15px 4px}
   .jb-user{align-self:flex-end;background:linear-gradient(135deg,#ff7ab0,#9b8bff);color:#fff;border-radius:15px 15px 4px 15px}
   .jb-go{display:inline-flex;align-items:center;gap:5px;margin-top:9px;font-size:12.5px;font-weight:800;color:#fff;background:linear-gradient(135deg,#ff5fa2,#9b8bff);padding:9px 15px;border-radius:100px;text-decoration:none}
-  .jb-quick{border-top:1px solid var(--line);background:var(--card);padding:11px 12px;max-height:188px;overflow-y:auto}
-  .jb-quick .lab{margin:0 0 8px 2px;font-size:11px;font-weight:800;color:var(--sub)}
-  .jb-quick .row{display:flex;flex-wrap:wrap;gap:7px}
-  .jb-q{font-size:12px;font-weight:700;color:#d83f86;background:rgba(255,95,162,.10);border:1px solid rgba(255,95,162,.28);border-radius:100px;padding:7px 12px;cursor:pointer;font-family:inherit}
-  .jb-q:hover{background:rgba(255,95,162,.2)}
+  .jb-quick{border-top:1px solid var(--line);background:var(--card);padding:11px 12px;max-height:300px;overflow-y:auto}
+  .jb-quick .lab{margin:0 0 9px 2px;font-size:11.5px;font-weight:800;color:var(--sub)}
+  .jb-quick .row{display:flex;flex-direction:column;gap:7px}
+  .jb-q{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;text-align:left;font-size:13.5px;font-weight:700;color:var(--ink);background:var(--soft);border:1px solid var(--line);border-radius:13px;padding:12px 14px;cursor:pointer;font-family:inherit;transition:transform .15s,border-color .15s,background .15s}
+  .jb-q::after{content:'›';color:#d83f86;font-weight:900;font-size:17px;flex:0 0 auto}
+  .jb-q:hover{background:rgba(255,95,162,.09);border-color:rgba(255,95,162,.4);transform:translateX(2px)}
   .jb-tel{color:#d83f86;font-weight:800;text-decoration:underline}
   @media(max-width:520px){ .jb-panel{left:14px;right:14px;width:auto} }
   footer{text-align:center;padding:34px 22px;color:var(--sub);font-size:13px}
@@ -497,8 +498,7 @@
 
   /* ── 지아봇: 새터민(탈북민) 지원·교육 연계 사이트 안내 (정해진 답변) ── */
   const JB=[
-    {q:'🏠 정착 지원 (남북하나재단)', d:'북한이탈주민의 정착·교육·취업·생활을 종합 지원하는 핵심 기관이에요.\n초기 정착금, 생활·의료, 교육·취업 프로그램을 안내받을 수 있어요.', u:'https://www.koreahana.or.kr'},
-    {q:'🏫 우리 동네 하나센터', d:'전국 지역 하나센터에서 초기 정착과 생활을 1:1로 도와줘요.\n하나재단 홈페이지에서 가까운 지역적응센터를 찾을 수 있어요.', u:'https://www.koreahana.or.kr'},
+    {q:'🏠 정착 지원 (남북하나재단)', d:'북한이탈주민의 정착·교육·취업·생활을 종합 지원하는 핵심 기관이에요.\n초기 정착금·생활·의료·취업 프로그램과, 전국 지역 하나센터(1:1 정착 도움)도 여기서 안내받을 수 있어요.', u:'https://www.koreahana.or.kr'},
     {q:'🏛️ 정부 정책 (통일부)', d:'북한이탈주민 정착지원 정책과 통일 관련 정보를 확인할 수 있어요.', u:'https://www.unikorea.go.kr'},
     {q:'📚 통일·안보 교육 (국립통일교육원)', d:'통일·안보 교육 자료와 온라인 강의를 무료로 들을 수 있어요.\n강사 이수빈의 강의 분야와도 이어지는 곳이에요.', u:'https://www.uniedu.go.kr'},
     {q:'🧑‍🎓 청소년 지원 (무지개청소년센터)', d:'탈북·이주배경 청소년의 학업과 한국 사회 적응을 돕는 곳이에요.', u:'https://www.rainbowyouth.or.kr'},
@@ -509,7 +509,7 @@
     {q:'⚖️ 무료 법률 상담 (법률구조공단)', d:'계약·임금·가족 등 법률 문제를 무료로 상담하고 소송도 도와줘요.', u:'https://www.klac.or.kr'},
     {q:'🏠 주거 지원 (LH 청약)', d:'공공임대주택 신청과 주거 지원 정보를 확인할 수 있어요.', u:'https://apply.lh.or.kr'},
     {q:'🎓 학비·장학금 (한국장학재단)', d:'탈북·정착민의 대학 등록금과 장학금을 지원받을 수 있어요.', u:'https://www.kosaf.go.kr'},
-    {q:'📖 학력 취득 (평생학습 늘배움)', d:'검정고시·평생교육·학력 인정 등 다시 공부할 수 있는 길을 안내해요.', u:'https://www.lifelongedu.go.kr'},
+    {q:'📖 학력 취득 (학점은행제)', d:'학점은행제·독학학위제로 대학 학위를 취득할 수 있어요.\n다시 공부해 학력을 인정받고 싶은 분께 도움이 돼요.', u:'https://www.cb.or.kr'},
     {q:'💼 여성 취업 (새일센터)', d:'경력단절·새터민 여성의 취업과 직업훈련(무료)을 도와줘요.', u:'https://saeil.mogef.go.kr'},
     {q:'🚀 창업 지원 (소상공인시장진흥공단)', d:'창업 교육·자금·컨설팅을 지원받을 수 있어요.', u:'https://www.semas.or.kr'},
     {q:'☎️ 긴급·상담 전화 모음', d:'힘들 때 언제든 전화하세요. (24시간 가능)\n· 정신건강 상담 1577-0199\n· 자살예방 1393\n· 여성긴급전화 1366\n· 청소년전화 1388\n· 범죄피해자 지원 1577-1295', tel:true},
