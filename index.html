@@ -18,10 +18,10 @@
   }
   /* 🌙 예쁜 다크 테마 (딥 플럼+네온 그라데이션) */
   :root[data-theme="dark"]{
-    --ink:#f1ecfb; --ink2:#d3c9ea; --sub:#a89bc6; --line:rgba(255,255,255,.10);
-    --bg:#120e1e; --card:#1d1730; --soft:#171127; --header:rgba(18,14,30,.82);
+    --ink:#f5f0ff; --ink2:#e3dcf6; --sub:#b3a8d4; --line:rgba(255,255,255,.12);
+    --bg:#1c1638; --card:#2a2150; --soft:#241d46; --header:rgba(28,22,56,.82);
   }
-  :root[data-theme="dark"] .reel{background:linear-gradient(150deg,#1a1030 0%,#2a1233 42%,#0f2024 100%)}
+  :root[data-theme="dark"] .reel{background:linear-gradient(150deg,#251a4d 0%,#3a1b50 44%,#16304a 100%)}
   :root[data-theme="dark"] .orb{mix-blend-mode:screen;opacity:.4}
   :root[data-theme="dark"] .cut .bg-line{color:#f1ecfb}
   :root[data-theme="dark"] .btn-soft{background:#241c38;border-color:rgba(255,255,255,.14)}
@@ -103,7 +103,8 @@
   .intro .cta{margin-top:30px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 
   .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:780px;margin:46px auto 0}
-  .stat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 14px;text-align:center;box-shadow:0 12px 30px rgba(40,30,60,.05)}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 14px;text-align:center;box-shadow:0 12px 30px rgba(40,30,60,.05);transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s}
+  .stat:hover{transform:translateY(-6px) scale(1.03);box-shadow:0 20px 42px rgba(255,95,162,.18)}
   .stat .num{font-size:clamp(22px,4vw,30px);font-weight:800;letter-spacing:-1px}
   .stat .lab{font-size:12.5px;color:var(--sub);margin-top:4px}
   @media(max-width:620px){.stats{grid-template-columns:repeat(2,1fr)}}
@@ -147,8 +148,10 @@
   .actwrap{margin-top:30px;background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 16px 40px rgba(40,30,60,.06)}
   table{width:100%;border-collapse:collapse;font-size:14px}
   thead th{background:var(--grad);background-size:240% auto;animation:sh 7s linear infinite;color:#fff;font-weight:800;font-size:13px;padding:14px 16px;text-align:left}
-  tbody td{padding:12px 16px;border-top:1px solid var(--line);color:#42394f;vertical-align:top}
-  tbody tr:hover{background:#fff6fb}
+  tbody td{padding:13px 16px;border-top:1px solid var(--line);color:var(--ink2);vertical-align:top}
+  tbody tr{transition:transform .22s cubic-bezier(.34,1.56,.64,1),box-shadow .22s,background .22s}
+  tbody tr:hover{background:linear-gradient(90deg,#fff,#fff2f8);transform:scale(1.018);box-shadow:0 12px 30px rgba(255,95,162,.3);position:relative;z-index:2;border-radius:12px}
+  tbody tr:hover td{color:#241c2e;font-weight:700;border-top-color:transparent}
   .cat{font-weight:800;white-space:nowrap}
   @media(max-width:760px){
     thead{display:none}
