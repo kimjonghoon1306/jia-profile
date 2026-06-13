@@ -238,6 +238,7 @@
   .jb-quick .row{display:flex;flex-wrap:wrap;gap:7px}
   .jb-q{font-size:12px;font-weight:700;color:#d83f86;background:rgba(255,95,162,.10);border:1px solid rgba(255,95,162,.28);border-radius:100px;padding:7px 12px;cursor:pointer;font-family:inherit}
   .jb-q:hover{background:rgba(255,95,162,.2)}
+  .jb-tel{color:#d83f86;font-weight:800;text-decoration:underline}
   @media(max-width:520px){ .jb-panel{left:14px;right:14px;width:auto} }
   footer{text-align:center;padding:34px 22px;color:var(--sub);font-size:13px}
 </style>
@@ -503,11 +504,27 @@
     {q:'🧑‍🎓 청소년 지원 (무지개청소년센터)', d:'탈북·이주배경 청소년의 학업과 한국 사회 적응을 돕는 곳이에요.', u:'https://www.rainbowyouth.or.kr'},
     {q:'💼 취업·일자리 (워크넷)', d:'일자리 검색과 취업 지원을 받을 수 있어요.\n하나재단과 연계된 취업 프로그램도 함께 활용해 보세요.', u:'https://www.work.go.kr'},
     {q:'🕊️ 인권·기록 (북한인권정보센터)', d:'북한 인권 기록과 정착민 상담·지원 정보를 제공해요.', u:'https://www.nkdb.org'},
+    {q:'🩺 마음 상담 (정신건강)', d:'정착 스트레스·트라우마, 혼자 견디지 마세요.\n· 정신건강 상담전화 1577-0199 (24시간)\n· 자살예방 상담 1393\n비밀이 보장된 전문 상담을 받을 수 있어요.', tel:true},
+    {q:'🧾 복지 신청 (복지로)', d:'기초생활보장·의료·양육 등 정부 복지 서비스를 한 곳에서 확인하고 신청할 수 있어요.', u:'https://www.bokjiro.go.kr'},
+    {q:'⚖️ 무료 법률 상담 (법률구조공단)', d:'계약·임금·가족 등 법률 문제를 무료로 상담하고 소송도 도와줘요.', u:'https://www.klac.or.kr'},
+    {q:'🏠 주거 지원 (LH 청약)', d:'공공임대주택 신청과 주거 지원 정보를 확인할 수 있어요.', u:'https://apply.lh.or.kr'},
+    {q:'🎓 학비·장학금 (한국장학재단)', d:'탈북·정착민의 대학 등록금과 장학금을 지원받을 수 있어요.', u:'https://www.kosaf.go.kr'},
+    {q:'📖 학력 취득 (평생학습 늘배움)', d:'검정고시·평생교육·학력 인정 등 다시 공부할 수 있는 길을 안내해요.', u:'https://www.lifelongedu.go.kr'},
+    {q:'💼 여성 취업 (새일센터)', d:'경력단절·새터민 여성의 취업과 직업훈련(무료)을 도와줘요.', u:'https://saeil.mogef.go.kr'},
+    {q:'🚀 창업 지원 (소상공인시장진흥공단)', d:'창업 교육·자금·컨설팅을 지원받을 수 있어요.', u:'https://www.semas.or.kr'},
+    {q:'☎️ 긴급·상담 전화 모음', d:'힘들 때 언제든 전화하세요. (24시간 가능)\n· 정신건강 상담 1577-0199\n· 자살예방 1393\n· 여성긴급전화 1366\n· 청소년전화 1388\n· 범죄피해자 지원 1577-1295', tel:true},
+    {q:'🧭 처음 오셨나요? (정착 순서)', d:'① 하나원에서 초기 정착 교육\n② 거주지 지역 하나센터에 등록\n③ 정착금·주거·의료·취업 지원 신청\n자세한 안내는 「🏠 정착 지원(남북하나재단)」 버튼을 눌러보세요.'},
   ];
   function jbScroll(){ var b=document.getElementById('jbBody'); if(b) b.scrollTop=b.scrollHeight; }
   function jbBot(html){ var b=document.getElementById('jbBody'); var d=document.createElement('div'); d.className='jb-msg jb-bot'; d.innerHTML=html; b.appendChild(d); jbScroll(); }
   function jbUser(t){ var b=document.getElementById('jbBody'); var d=document.createElement('div'); d.className='jb-msg jb-user'; d.textContent=t; b.appendChild(d); jbScroll(); }
-  function jbAsk(i){ var x=JB[i]; jbUser(x.q); jbBot(x.d.replace(/</g,'&lt;')+'<br><a class="jb-go" href="'+x.u+'" target="_blank" rel="noopener">사이트 바로가기 →</a>'); }
+  function jbAsk(i){
+    var x=JB[i]; jbUser(x.q);
+    var html=x.d.replace(/</g,'&lt;');
+    if(x.tel){ html=html.replace(/(\d{4}-\d{4}|1\d{3})/g, function(m){ return '<a class="jb-tel" href="tel:'+m.replace(/-/g,'')+'">'+m+'</a>'; }); }
+    if(x.u){ html += '<br><a class="jb-go" href="'+x.u+'" target="_blank" rel="noopener">사이트 바로가기 →</a>'; }
+    jbBot(html);
+  }
   function jbInit(){
     var q=document.getElementById('jbQuick'); if(q.childElementCount) return;
     JB.forEach(function(x,i){ var btn=document.createElement('button'); btn.className='jb-q'; btn.textContent=x.q; btn.onclick=function(){jbAsk(i)}; q.appendChild(btn); });
