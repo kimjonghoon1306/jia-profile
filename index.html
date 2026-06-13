@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>이수빈 · 통일·안보 교육 전문강사</title>
+<meta name="description" content="함경북도 회령 출신, 통일·안보·인성 교육 전문강사 이수빈. 15년간 군부대·학교·공무원·대학에서 통일과 평화를 강의해 왔습니다." />
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" rel="stylesheet">
+<style>
+  :root{
+    --gold:#f0b14a; --gold2:#ffd27a;
+    --pink:#ff5fa2; --pink2:#ff9ec9;
+    --mint:#1ec98a; --mint2:#5ee3b6;
+    --lav:#9b8bff;
+    --ink:#23202b; --sub:#7b7689; --line:rgba(40,30,60,.10);
+    --bg:#fffdf9; --card:#ffffff;
+    --grad:linear-gradient(100deg,var(--gold) 0%,var(--pink) 48%,var(--mint) 100%);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--ink);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 22px}
+
+  /* 반복 색상변화(그라데이션 흐름) */
+  @keyframes sh{to{background-position:240% center}}
+  .grad{background:var(--grad);background-size:240% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh 6s linear infinite}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.on{opacity:1;transform:none}
+
+  /* ───────── 시네마틱 인트로(reel) ───────── */
+  .reel{position:relative;width:100%;min-height:100vh;overflow:hidden;display:grid;place-items:center;text-align:center;
+    background:linear-gradient(150deg,#fff3e0 0%,#ffe6f1 40%,#e6fbf2 100%);background-size:240% 240%;animation:dawn 16s ease-in-out infinite}
+  @keyframes dawn{0%,100%{background-position:0% 0%}50%{background-position:100% 100%}}
+  .orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;mix-blend-mode:multiply;pointer-events:none}
+  .o1{width:46vw;height:46vw;background:var(--gold);left:-10%;top:-12%;animation:drift 15s ease-in-out infinite}
+  .o2{width:42vw;height:42vw;background:var(--pink);right:-12%;top:4%;animation:drift 18s ease-in-out infinite reverse}
+  .o3{width:50vw;height:50vw;background:var(--mint);left:22%;bottom:-26%;animation:drift 21s ease-in-out infinite}
+  .o4{width:34vw;height:34vw;background:var(--lav);right:8%;bottom:-10%;animation:drift 17s ease-in-out infinite reverse}
+  @keyframes drift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(7%,6%) scale(1.14)}}
+
+  .cuts{position:relative;z-index:2;padding:0 20px}
+  .cut{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(90vw,820px);opacity:0}
+  .cut .sm{font-size:clamp(14px,2.4vw,18px);font-weight:700;color:var(--sub);letter-spacing:.3px}
+  .cut .bg-line{font-size:clamp(30px,7vw,62px);font-weight:800;letter-spacing:-2px;line-height:1.15;margin-top:10px;color:var(--ink)}
+  /* 6컷 × 5초 = 30초 루프 */
+  .c1{animation:cut 30s infinite 0s}
+  .c2{animation:cut 30s infinite 5s}
+  .c3{animation:cut 30s infinite 10s}
+  .c4{animation:cut 30s infinite 15s}
+  .c5{animation:cut 30s infinite 20s}
+  .c6{animation:cut 30s infinite 25s}
+  @keyframes cut{
+    0%{opacity:0;transform:translate(-50%,-42%) scale(.98)}
+    3%{opacity:1;transform:translate(-50%,-50%) scale(1)}
+    13.3%{opacity:1;transform:translate(-50%,-50%) scale(1)}
+    16.6%{opacity:0;transform:translate(-50%,-58%) scale(1.02)}
+    100%{opacity:0}
+  }
+  .reel-scroll{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:3;font-size:12px;font-weight:800;letter-spacing:2px;color:var(--sub);animation:bob 1.8s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
+  .reel-enter{position:absolute;top:22px;right:22px;z-index:3}
+  .reel-enter a{display:inline-block;color:#fff;font-weight:800;font-size:14px;background:var(--grad);background-size:240% auto;animation:sh 5s linear infinite;padding:11px 20px;border-radius:999px;box-shadow:0 12px 26px -10px var(--pink)}
+
+  /* ───────── 헤더 ───────── */
+  header{position:sticky;top:0;z-index:50;background:rgba(255,253,249,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-weight:800;font-size:19px;letter-spacing:-.5px}
+  .menu{display:flex;gap:26px;font-size:14.5px;font-weight:600;color:var(--sub)}
+  .menu a:hover{color:var(--ink)}
+  .nav-cta{color:#fff;background:var(--grad);background-size:240% auto;animation:sh 5s linear infinite;padding:9px 18px;border-radius:100px;font-size:13.5px;font-weight:800;box-shadow:0 10px 22px -10px var(--pink)}
+  @media(max-width:760px){.menu{display:none}}
+
+  /* ───────── 섹션 공통 ───────── */
+  section.block{padding:80px 0}
+  .eyebrow{font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase}
+  .h2{font-size:clamp(27px,4.4vw,42px);font-weight:800;letter-spacing:-1.2px;margin:10px 0 8px}
+  .lead2{color:var(--sub);font-size:16px;max-width:640px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:100px;font-weight:800;font-size:15px;transition:transform .2s,box-shadow .2s;cursor:pointer}
+  .btn:hover{transform:translateY(-3px)}
+  .btn-grad{color:#fff;background:var(--grad);background-size:240% auto;animation:sh 5s linear infinite;box-shadow:0 14px 32px -10px var(--pink)}
+  .btn-soft{background:#fff;border:1.5px solid var(--line);color:var(--ink)}
+
+  /* 인트로 아래 인사 히어로 */
+  .intro{padding:74px 0 30px;text-align:center}
+  .intro .tag{display:inline-block;font-size:13px;font-weight:800;letter-spacing:.5px;color:#fff;background:var(--grad);background-size:240% auto;animation:sh 5s linear infinite;padding:7px 16px;border-radius:100px;margin-bottom:20px}
+  .intro h1{font-size:clamp(30px,5.4vw,52px);font-weight:800;letter-spacing:-1.6px;line-height:1.18}
+  .intro p{margin:18px auto 0;max-width:660px;color:var(--sub);font-size:clamp(15px,2.1vw,17px)}
+  .intro .cta{margin-top:30px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:780px;margin:46px auto 0}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 14px;text-align:center;box-shadow:0 12px 30px rgba(40,30,60,.05)}
+  .stat .num{font-size:clamp(22px,4vw,30px);font-weight:800;letter-spacing:-1px}
+  .stat .lab{font-size:12.5px;color:var(--sub);margin-top:4px}
+  @media(max-width:620px){.stats{grid-template-columns:repeat(2,1fr)}}
+
+  /* 소개 */
+  .about{display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:center}
+  @media(max-width:820px){.about{grid-template-columns:1fr;gap:28px}}
+  .about p{color:#473f55;font-size:15.5px;margin-bottom:13px}
+  .about .quote{border-left:3px solid var(--pink);padding:6px 0 6px 18px;font-weight:700;font-size:17px;margin:22px 0}
+  .pcard{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:30px;box-shadow:0 22px 50px rgba(40,30,60,.08)}
+  .pcard .face{width:96px;height:96px;border-radius:50%;background:var(--grad);background-size:240% auto;animation:sh 6s linear infinite;display:flex;align-items:center;justify-content:center;font-size:40px;color:#fff;margin-bottom:18px;box-shadow:0 14px 30px -8px var(--pink)}
+  .pcard h3{font-size:24px;font-weight:800}
+  .pcard .role{font-weight:800;font-size:14px;margin:2px 0 16px}
+  .pcard .row{display:flex;gap:10px;padding:9px 0;border-top:1px solid var(--line);font-size:14px}
+  .pcard .row b{color:var(--sub);min-width:58px;font-weight:600}
+  .pcard .row a{font-weight:700}
+
+  /* 강의 분야 */
+  .fields{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:36px}
+  @media(max-width:820px){.fields{grid-template-columns:repeat(2,1fr)}}
+  .field{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;transition:transform .25s,box-shadow .25s}
+  .field:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(40,30,60,.1)}
+  .field .ic{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;font-size:26px;color:#fff}
+  .ic1{background:linear-gradient(135deg,var(--gold2),var(--gold))}
+  .ic2{background:linear-gradient(135deg,var(--pink2),var(--pink))}
+  .ic3{background:linear-gradient(135deg,var(--mint2),var(--mint))}
+  .ic4{background:linear-gradient(135deg,#c0b6ff,var(--lav))}
+  .field h4{margin:14px 0 6px;font-size:17px;font-weight:800}
+  .field p{font-size:13.5px;color:var(--sub)}
+
+  /* 타임라인 */
+  .tl{position:relative;margin-top:18px;padding-left:24px}
+  .tl::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:var(--grad);background-size:auto 240%;animation:sh 6s linear infinite}
+  .tl .item{position:relative;padding:0 0 24px 22px}
+  .tl .item::before{content:"";position:absolute;left:-22px;top:5px;width:12px;height:12px;border-radius:50%;background:#fff;border:3px solid var(--pink)}
+  .tl .yr{font-size:13px;font-weight:800;color:var(--pink)}
+  .tl .ti{font-size:16px;font-weight:700;margin:2px 0}
+  .tl .de{font-size:14px;color:var(--sub)}
+
+  /* 강의 활동 표 */
+  .actwrap{margin-top:30px;background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 16px 40px rgba(40,30,60,.06)}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  thead th{background:var(--grad);background-size:240% auto;animation:sh 7s linear infinite;color:#fff;font-weight:800;font-size:13px;padding:14px 16px;text-align:left}
+  tbody td{padding:12px 16px;border-top:1px solid var(--line);color:#42394f;vertical-align:top}
+  tbody tr:hover{background:#fff6fb}
+  .cat{font-weight:800;white-space:nowrap}
+  @media(max-width:760px){
+    thead{display:none}
+    tbody td{display:block;border:none;padding:3px 16px}
+    tbody tr{display:block;border-top:1px solid var(--line);padding:12px 0}
+    tbody td::before{content:attr(data-l) "  ";color:var(--pink);font-weight:800;font-size:12px}
+  }
+
+  /* 연락 */
+  .contact{position:relative;overflow:hidden;border-radius:30px;padding:58px 32px;text-align:center;margin:0 22px;color:#fff;
+    background:linear-gradient(120deg,var(--gold),var(--pink) 52%,var(--mint));background-size:240% 240%;animation:dawn 12s ease-in-out infinite}
+  .contact h2{font-size:clamp(25px,4vw,36px);font-weight:800;letter-spacing:-1px}
+  .contact p{opacity:.92;margin-top:10px}
+  .contact .ways{margin-top:26px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .contact .w{background:rgba(255,255,255,.96);color:var(--ink);padding:14px 24px;border-radius:100px;font-weight:800;font-size:15px;box-shadow:0 14px 30px rgba(0,0,0,.18);transition:transform .2s}
+  .contact .w:hover{transform:translateY(-3px)}
+  footer{text-align:center;padding:34px 22px;color:var(--sub);font-size:13px}
+</style>
+</head>
+<body>
+
+<!-- ───── 시네마틱 인트로 ───── -->
+<section class="reel">
+  <span class="orb o1"></span><span class="orb o2"></span><span class="orb o3"></span><span class="orb o4"></span>
+  <div class="reel-enter"><a href="#home">프로필 보기 →</a></div>
+  <div class="cuts">
+    <div class="cut c1"><p class="sm">한 사람의 용기가</p><p class="bg-line grad">분단의 강을 건넜습니다</p></div>
+    <div class="cut c2"><p class="sm">2008년, 자유를 찾아</p><p class="bg-line">대한민국의 <span class="grad">품으로</span></p></div>
+    <div class="cut c3"><p class="sm">간호사의 꿈, 그리고</p><p class="bg-line"><span class="grad">북한학 석사</span></p></div>
+    <div class="cut c4"><p class="sm">2010년부터 지금까지</p><p class="bg-line"><span class="grad">15년</span>, 멈추지 않은 강단</p></div>
+    <div class="cut c5"><p class="sm">군부대 · 학교 · 공무원</p><p class="bg-line"><span class="grad">15,000명</span>의 마음을 움직이다</p></div>
+    <div class="cut c6"><p class="sm">살아낸 이야기로, 통일을 전합니다</p><p class="bg-line grad">강사 이수빈</p></div>
+  </div>
+  <div class="reel-scroll">SCROLL ↓</div>
+</section>
+
+<header id="home">
+  <div class="wrap nav">
+    <div class="logo grad">이수빈</div>
+    <nav class="menu">
+      <a href="#about">소개</a>
+      <a href="#fields">강의 분야</a>
+      <a href="#career">학력·경력</a>
+      <a href="#activity">강의 활동</a>
+    </nav>
+    <a href="#contact" class="nav-cta">강의 문의</a>
+  </div>
+</header>
+
+<!-- 인사 -->
+<section class="intro wrap">
+  <span class="tag reveal">통일 · 안보 · 인성 교육 전문강사</span>
+  <h1 class="reveal">분단을 넘어,<br><span class="grad">통일과 평화</span>를 이야기합니다</h1>
+  <p class="reveal">함경북도 회령에서 태어나 자유를 찾아 대한민국에 온 후, 15년 넘게 군부대·학교·공무원·대학을 무대로 통일과 안보, 사람의 가치를 전해 온 전문강사입니다.</p>
+  <div class="cta reveal">
+    <a href="#contact" class="btn btn-grad">강의 문의하기</a>
+    <a href="#activity" class="btn btn-soft">강의 활동 보기</a>
+  </div>
+  <div class="stats">
+    <div class="stat reveal"><div class="num grad">15년+</div><div class="lab">통일·안보 강의 경력</div></div>
+    <div class="stat reveal"><div class="num grad">15,000+</div><div class="lab">누적 강의 청중</div></div>
+    <div class="stat reveal"><div class="num grad">20곳+</div><div class="lab">학교·기관·군부대</div></div>
+    <div class="stat reveal"><div class="num grad">석사</div><div class="lab">북한학 전공</div></div>
+  </div>
+</section>
+
+<!-- 소개 -->
+<section class="block" id="about">
+  <div class="wrap about">
+    <div class="reveal">
+      <p class="eyebrow grad">ABOUT</p>
+      <h2 class="h2">한 사람의 삶이<br>가장 진실한 교과서입니다</h2>
+      <p>함경북도 회령에서 나고 자라, 회령구두공장 노동자와 청년동맹 초급단체 부위원장을 거쳤습니다. 2008년 9월, 자유를 찾아 대한민국에 입국했습니다.</p>
+      <p>입국 후 계명대학교 간호대학에서 간호학 학사를, 북한대학원대학교에서 북한학 석사 과정을 밟으며 분단의 현실을 학문으로 마주했습니다.</p>
+      <p>2010년부터 지금까지, 직접 겪은 북한의 삶과 자유의 소중함을 바탕으로 통일·안보·인성 교육을 이어오고 있습니다.</p>
+      <div class="quote grad">“막연한 이야기가 아니라, 살아낸 이야기로 통일을 전합니다.”</div>
+    </div>
+    <div class="pcard reveal">
+      <div class="face">李</div>
+      <h3>이수빈 <span style="font-size:15px;color:var(--sub);font-weight:600">(李隨斌)</span></h3>
+      <div class="role grad">통일 · 안보 교육 전문강사</div>
+      <div class="row"><b>전공</b><span>간호학 학사 · 북한학 석사</span></div>
+      <div class="row"><b>입국</b><span>2008년 9월 대한민국 입국</span></div>
+      <div class="row"><b>이메일</b><a href="mailto:hyeonju4599@naver.com" class="grad">hyeonju4599@naver.com</a></div>
+      <div class="row"><b>연락처</b><a href="tel:01074157598" class="grad">010-7415-7598</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- 강의 분야 -->
+<section class="block" id="fields" style="background:linear-gradient(180deg,#fff,#fff6ef)">
+  <div class="wrap">
+    <p class="eyebrow grad reveal">EXPERTISE</p>
+    <h2 class="h2 reveal">강의 분야</h2>
+    <p class="lead2 reveal">대상과 현장에 맞춰 강의와 토크쇼 형식을 자유롭게 진행합니다.</p>
+    <div class="fields">
+      <div class="field reveal"><div class="ic ic1">🕊️</div><h4>통일 교육</h4><p>분단과 통일의 의미를 살아온 경험으로 풀어내는 통일 교육.</p></div>
+      <div class="field reveal"><div class="ic ic2">🛡️</div><h4>안보 교육</h4><p>군부대·경찰·민방위 대상 현장 중심 안보 의식 교육.</p></div>
+      <div class="field reveal"><div class="ic ic3">💛</div><h4>인성 교육</h4><p>자유와 책임, 사람의 가치를 일깨우는 인성·가치 교육.</p></div>
+      <div class="field reveal"><div class="ic ic4">🎤</div><h4>토크쇼·체험</h4><p>통일버스·현장 체험과 토크쇼로 공감을 끌어내는 소통형 강의.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 학력·경력 -->
+<section class="block" id="career">
+  <div class="wrap">
+    <p class="eyebrow grad reveal">EDUCATION & CAREER</p>
+    <h2 class="h2 reveal">학력 · 주요 경력</h2>
+    <div class="about" style="align-items:start;margin-top:14px">
+      <div class="reveal">
+        <h4 class="grad" style="font-size:14px;letter-spacing:1px;margin-bottom:14px">학력</h4>
+        <div class="tl">
+          <div class="item"><div class="yr">2016.9 ~ 2018.8</div><div class="ti">북한학 석사 (수료)</div><div class="de">북한대학원대학교 북한학과</div></div>
+          <div class="item"><div class="yr">2010.3 ~ 2014.2</div><div class="ti">간호학 학사 졸업</div><div class="de">계명대학교 간호대학 간호학과</div></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <h4 class="grad" style="font-size:14px;letter-spacing:1px;margin-bottom:14px">주요 경력</h4>
+        <div class="tl">
+          <div class="item"><div class="yr">2016.5 ~ 2019.2</div><div class="ti">전문강사</div><div class="de">대구지역통일교육센터</div></div>
+          <div class="item"><div class="yr">2010.11 ~ 2011.12</div><div class="ti">중학교 통일교육 강사</div><div class="de">대구광역시 교육청</div></div>
+          <div class="item"><div class="yr">2008.9.4</div><div class="ti">대한민국 입국</div><div class="de">새로운 삶의 시작</div></div>
+          <div class="item"><div class="yr">~ 현재</div><div class="ti">프리랜서 전문강사</div><div class="de">군부대·사회단체 강의 및 토크쇼 진행</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 강의 활동 -->
+<section class="block" id="activity" style="background:linear-gradient(180deg,#fff6ef,#fff)">
+  <div class="wrap">
+    <p class="eyebrow grad reveal">ACTIVITIES</p>
+    <h2 class="h2 reveal">강의 활동 내역</h2>
+    <p class="lead2 reveal">2011년부터 군부대·경찰·민방위·학군단·학교·대학·공무원 등 다양한 현장에서 강의와 토크쇼를 진행해 왔습니다.</p>
+    <div class="actwrap reveal">
+      <table>
+        <thead><tr><th>구분</th><th>기간</th><th>대상</th><th>규모</th></tr></thead>
+        <tbody>
+          <tr><td data-l="구분" class="cat">통일교육</td><td data-l="기간">2015.6~2025.9</td><td data-l="대상">초·중·고등학교</td><td data-l="규모">3,000여 명</td></tr>
+          <tr><td data-l="구분" class="cat">통일·안보교육</td><td data-l="기간">2016.3~2022.12</td><td data-l="대상">학군단(ROTC)</td><td data-l="규모">5,000여 명</td></tr>
+          <tr><td data-l="구분" class="cat">안보교육</td><td data-l="기간">2011.1~2016.12</td><td data-l="대상">경찰·군부대·민방위·시민</td><td data-l="규모">3,000여 명</td></tr>
+          <tr><td data-l="구분" class="cat">통일교육</td><td data-l="기간">2016.5~2019.2</td><td data-l="대상">대구시청·출입국·환경청 등 공무원</td><td data-l="규모">800여 명</td></tr>
+          <tr><td data-l="구분" class="cat">통일교육</td><td data-l="기간">2016.5~2026.5</td><td data-l="대상">경북대·대구대·구미대·우석대·진주대</td><td data-l="규모">1,000여 명</td></tr>
+          <tr><td data-l="구분" class="cat">인성교육</td><td data-l="기간">2016.5~2019.2</td><td data-l="대상">대구구치소</td><td data-l="규모">500여 명</td></tr>
+          <tr><td data-l="구분" class="cat">통일버스</td><td data-l="기간">2025.5~2025.10</td><td data-l="대상">버스·현장 체험</td><td data-l="규모">400여 명</td></tr>
+          <tr><td data-l="구분" class="cat">통일교육</td><td data-l="기간">2025</td><td data-l="대상">강원남부·북부 하나센터</td><td data-l="규모">진행</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:13px;color:var(--sub);margin-top:14px" class="reveal">※ 통일·안보 교육은 2011년부터 시작하여 군부대, 경찰청, 민방위, 학군단, 국방정신전력원 등에서 강의 또는 토크쇼 형식으로 진행하였습니다.</p>
+  </div>
+</section>
+
+<!-- 연락 -->
+<section class="block" id="contact">
+  <div class="contact reveal">
+    <h2>강의 · 토크쇼 문의</h2>
+    <p>학교, 군부대, 기관, 단체 어디든 찾아갑니다. 편하게 연락 주세요.</p>
+    <div class="ways">
+      <a href="mailto:hyeonju4599@naver.com" class="w">✉️ hyeonju4599@naver.com</a>
+      <a href="tel:01074157598" class="w">📞 010-7415-7598</a>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 이수빈 · 통일·안보 교육 전문강사 — Profile by jia</footer>
+
+<script>
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4*70)+'ms';io.observe(el)});
+</script>
+</body>
+</html>
